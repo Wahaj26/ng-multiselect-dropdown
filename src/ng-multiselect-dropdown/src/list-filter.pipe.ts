@@ -15,6 +15,6 @@ export class ListFilterPipe implements PipeTransform {
     }
 
     applyFilter(item: ListItem, filter: ListItem): boolean {
-        return !(filter.text && item.text && item.text.toLowerCase().indexOf(filter.text.toLowerCase()) === -1);
+        return !(filter.text && item.text && (item.text as string).toLowerCase().indexOf((filter.text as string).toLowerCase()) === -1);
     }
 }

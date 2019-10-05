@@ -4,8 +4,8 @@
     <div class="col-md-4">
       <h3>Select a single city</h3>
       <form>
-        <ng-multiselect-dropdown name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
-          [disabled]="disabled">
+        <ng-multiselect-dropdown name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)" [disabled]="disabled">
         </ng-multiselect-dropdown>
       </form>
     </div>
@@ -13,7 +13,8 @@
       <h3>Option</h3>
       <div class="checkbox">
         <label>
-          <input type="checkbox" [checked]="closeDropdownSelection" (change)="toggleCloseDropdownSelection()">Close Dropdown on selection
+          <input type="checkbox" [checked]="closeDropdownSelection" (change)="toggleCloseDropdownSelection()">Close
+          Dropdown on selection
         </label>
       </div>
       <div class="checkbox">

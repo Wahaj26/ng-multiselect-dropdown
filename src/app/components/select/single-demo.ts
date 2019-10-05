@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'single-demo',
-  templateUrl: './single-demo.html'
+    selector: 'single-demo',
+    templateUrl: './single-demo.html',
 })
 export class SingleDemoComponent implements OnInit {
-  cities: Array<string> = [];
-  selectedItem: Array<string> = [];
-  dropdownSettings: any = {};
-  closeDropdownSelection = false;
-  disabled = false;
-  htmlCode = `
+    cities: Array<string> = [];
+    selectedItem: string;
+    dropdownSettings: any = {};
+    closeDropdownSelection = false;
+    disabled = false;
+    htmlCode = `
    &lt;ng-multiselect-dropdown
        name="city"
        [data]="cities"
@@ -20,7 +20,7 @@ export class SingleDemoComponent implements OnInit {
        [disabled]="disabled"
    &lt;/ng-multiselect-dropdown&gt;
 `;
-  typescriptCode = `
+    typescriptCode = `
     import { Component, OnInit } from '@angular/core';
 
     @Component({
@@ -29,14 +29,14 @@ export class SingleDemoComponent implements OnInit {
     })
     export class SingleDemoComponent implements OnInit {
         cities: Array<string> = [];
-        selectedItem: Array<string> = [];
+        selectedItem: string = {};
         dropdownSettings: any = {};
         closeDropdownSelection=false;
         disabled=false;
 
         ngOnInit() {
             this.cities = ['Mumbai', 'New Delhi', 'Bangaluru', 'Pune', 'Navsari'];
-            this.selectedItem = ['Pune'];
+            this.selectedItem = {'Pune'};
             this.dropdownSettings = {
                 singleSelection: true,
                 selectAllText: 'Select All',
@@ -58,30 +58,31 @@ export class SingleDemoComponent implements OnInit {
     }
 `;
 
-  ngOnInit() {
-    this.cities = ['Mumbai', 'New Delhi', 'Bangaluru', 'Pune', 'Navsari'];
+    ngOnInit() {
+        this.cities = ['Mumbai', 'New Delhi', 'Bangaluru', 'Pune', 'Navsari'];
 
-    this.dropdownSettings = {
-      singleSelection: true,
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      allowSearchFilter: true,
-      closeDropDownOnSelection: this.closeDropdownSelection
-    };
-    this.selectedItem = ['Mumbai'];
-  }
+        this.dropdownSettings = {
+            singleSelection: true,
+            selectAllText: 'Select All',
+            unSelectAllText: 'UnSelect All',
+            allowSearchFilter: true,
+            closeDropDownOnSelection: this.closeDropdownSelection,
+        };
+        this.selectedItem = 'Mumbai';
+    }
 
-  onItemSelect(item: any) {
-    console.log('onItemSelect', item);
-    console.log('selectedItem', this.selectedItem);
-  }
+    onItemSelect(item: any) {
+        console.log('onItemSelect', item);
+    }
 
-  toggleCloseDropdownSelection() {
-    this.closeDropdownSelection = !this.closeDropdownSelection;
-    this.dropdownSettings = Object.assign({}, this.dropdownSettings, { closeDropDownOnSelection: this.closeDropdownSelection });
-  }
+    toggleCloseDropdownSelection() {
+        this.closeDropdownSelection = !this.closeDropdownSelection;
+        this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+            closeDropDownOnSelection: this.closeDropdownSelection,
+        });
+    }
 
-  handleReset() {
-    this.selectedItem = [];
-  }
+    handleReset() {
+        this.selectedItem = '';
+    }
 }
